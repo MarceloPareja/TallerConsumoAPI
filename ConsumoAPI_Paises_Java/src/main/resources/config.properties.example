@@ -1,0 +1,4 @@
+# Copie este archivo como config.properties y coloque su API key de REST Countries.
+# También puede usar la variable de entorno RESTCOUNTRIES_API_KEY
+# o la propiedad -Drestcountries.api.key=SU_KEY.
+restcountries.api.key=rc_live_demo

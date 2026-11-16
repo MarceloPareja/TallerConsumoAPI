@@ -1,0 +1,10 @@
+target/
+nbproject/private/
+build/
+dist/
+*.class
+*.log
+.idea/
+*.iml
+.vscode/
+src/main/resources/config.properties

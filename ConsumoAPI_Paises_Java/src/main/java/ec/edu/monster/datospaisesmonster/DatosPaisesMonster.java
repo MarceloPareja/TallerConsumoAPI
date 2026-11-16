@@ -1,16 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package ec.edu.monster.datospaisesmonster;
 
+import ec.edu.monster.datospaisesmonster.controlador.LoginController;
+import ec.edu.monster.datospaisesmonster.vista.DlgLogin;
+import ec.edu.monster.datospaisesmonster.vista.FrmPais;
+
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 /**
+ * Punto de entrada del taller.
  *
- * @author marpa
+ * Primero se muestra la subpantalla de acceso; la ventana principal solo se
+ * abre cuando las credenciales son correctas.
  */
 public class DatosPaisesMonster {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {
+            // Si el look and feel del sistema no está disponible, se usa el de Java.
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            if (!DlgLogin.mostrar(null)) {
+                System.exit(0);
+            }
+            FrmPais frm = new FrmPais(new LoginController().getUsuario());
+            frm.setVisible(true);
+        });
     }
 }
