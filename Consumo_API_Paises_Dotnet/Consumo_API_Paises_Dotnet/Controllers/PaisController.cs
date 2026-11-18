@@ -60,6 +60,100 @@ namespace Consumo_API_Paises_Dotnet.Controllers
         }
 
         /// <summary>
+        /// Actualiza los registros existentes con la información vigente de la API.
+        /// Aplica el principio HTTP 304: si no hay diferencias, no se escribe en la BD.
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Actualizar()
+        {
+            var existentes = await _context.Paises.ToListAsync();
+
+            if (existentes.Count == 0)
+            {
+                TempData["Mensaje"] = "No hay países registrados. Use 'Importar todos' para cargar la información.";
+                return RedirectToAction(nameof(Lista));
+            }
+
+            try
+            {
+                var paisesApi = await _paisService.ObtenerPaisesAsync();
+
+                if (paisesApi.Count == 0)
+                {
+                    TempData["Mensaje"] = "La API no devolvió información.";
+                    return RedirectToAction(nameof(Lista));
+                }
+
+                // Clave natural: Nombre normalizado (el modelo no tiene código ISO).
+                var porNombre = existentes
+                    .GroupBy(p => Normalizar(p.Nombre))
+                    .ToDictionary(g => g.Key, g => g.First());
+
+                var actualizados = 0;
+                var sinCambios = 0;
+                var noEncontrados = 0;
+
+                foreach (var paisApi in paisesApi)
+                {
+                    if (!porNombre.TryGetValue(Normalizar(paisApi.Nombre), out var paisBd))
+                    {
+                        // Solo se actualizan existentes: no se inserta.
+                        noEncontrados++;
+                        continue;
+                    }
+
+                    if (SonIguales(paisBd, paisApi))
+                    {
+                        sinCambios++;
+                        continue;
+                    }
+
+                    // La entidad está trackeada: al asignar, EF la marca como modificada.
+                    paisBd.Capital = paisApi.Capital;
+                    paisBd.Region = paisApi.Region;
+                    paisBd.SubRegion = paisApi.SubRegion;
+                    paisBd.Poblacion = paisApi.Poblacion;
+                    paisBd.Area = paisApi.Area;
+                    paisBd.Moneda = paisApi.Moneda;
+                    actualizados++;
+                }
+
+                if (actualizados == 0)
+                {
+                    // Principio 304: no hay cambios, no se llama a SaveChangesAsync().
+                    TempData["Mensaje"] = sinCambios > 0
+                        ? $"304 Not Modified: los {sinCambios} países ya estaban actualizados. No se modificó ningún registro."
+                        : "304 Not Modified: ningún país de la API coincide con los registros de la BD.";
+                    return RedirectToAction(nameof(Lista));
+                }
+
+                await _context.SaveChangesAsync();
+
+                TempData["Mensaje"] =
+                    $"{actualizados} países actualizados; {sinCambios} sin cambios (304); " +
+                    $"{noEncontrados} de la API no existen en la BD.";
+            }
+            catch (HttpRequestException ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(Lista));
+        }
+
+        private static string Normalizar(string valor) =>
+            (valor ?? string.Empty).Trim().ToUpperInvariant();
+
+        private static bool SonIguales(Pais bd, Pais api) =>
+            string.Equals(bd.Capital, api.Capital, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(bd.Region, api.Region, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(bd.SubRegion, api.SubRegion, StringComparison.OrdinalIgnoreCase) &&
+            bd.Poblacion == api.Poblacion &&
+            Math.Abs(bd.Area - api.Area) < 0.01 &&
+            string.Equals(bd.Moneda, api.Moneda, StringComparison.OrdinalIgnoreCase);
+
+        /// <summary>
         /// Listado con búsquedas (Actividad 3) y filtros dinámicos (Actividad 4).
         /// </summary>
         public async Task<IActionResult> Lista(string? nombre, string? region, string? capital, string? orden)

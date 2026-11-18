@@ -26,8 +26,12 @@
 <section class="app-toolbar">
     <div class="app-toolbar-group">
         <a asp-action="Create" class="btn-app btn-app-primary">Nuevo ingreso de país</a>
-        <a asp-action="Lista" class="btn-app btn-app-muted" title="Volver a cargar el listado">Actualizar</a>
-        <button type="button" class="btn-app btn-app-muted" title="Seleccione un país de la tabla para eliminarlo">Eliminar</button>
+        <form asp-action="Actualizar" method="post" class="d-inline-block m-0">
+            <button type="submit" class="btn-app btn-app-muted"
+                    title="Consulta la API y actualiza los registros existentes (304 si no hay cambios)">
+                Actualizar
+            </button>
+        </form>
     </div>
     <div class="app-toolbar-group">
         <a asp-action="Importar" class="btn-app btn-app-sky">Importar todos</a>

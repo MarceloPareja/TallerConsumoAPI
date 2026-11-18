@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|c:\\users\\marpa\\documents\\jabonconcafe\\taller_consumirapi_monster\\consumo_api_paises_dotnet\\consumo_api_paises_dotnet\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|c:\\users\\marpa\\documents\\jabonconcafe\\taller_consumirapi_monster\\consumo_api_paises_dotnet\\consumo_api_paises_dotnet\\migrations\\20261116152111_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\migrations\\20261116152111_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|c:\\users\\marpa\\documents\\jabonconcafe\\taller_consumirapi_monster\\consumo_api_paises_dotnet\\consumo_api_paises_dotnet\\bdd\\02_reportes.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\bdd\\02_reportes.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|c:\\users\\marpa\\documents\\jabonconcafe\\taller_consumirapi_monster\\consumo_api_paises_dotnet\\consumo_api_paises_dotnet\\bdd\\01_createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\bdd\\01_createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|c:\\users\\marpa\\documents\\jabonconcafe\\taller_consumirapi_monster\\consumo_api_paises_dotnet\\consumo_api_paises_dotnet\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{17558760-2EAA-796D-8F69-062FF81CF51F}|Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj|solutionrelative:consumo_api_paises_dotnet\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -26,11 +42,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Consumo_API_Paises_Dotnet\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-18T14:16:00.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20261116152111_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Migrations\\20261116152111_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\Migrations\\20261116152111_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Migrations\\20261116152111_InitialCreate.cs",
+              "RelativeToolTip": "Consumo_API_Paises_Dotnet\\Migrations\\20261116152111_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-18T14:15:59.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "02_Reportes.sql",
+              "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Bdd\\02_Reportes.sql",
+              "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\Bdd\\02_Reportes.sql",
+              "ToolTip": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Bdd\\02_Reportes.sql",
+              "RelativeToolTip": "Consumo_API_Paises_Dotnet\\Bdd\\02_Reportes.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-18T14:15:53.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "01_CreateDatabase.sql",
+              "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Bdd\\01_CreateDatabase.sql",
+              "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\Bdd\\01_CreateDatabase.sql",
+              "ToolTip": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Bdd\\01_CreateDatabase.sql",
+              "RelativeToolTip": "Consumo_API_Paises_Dotnet\\Bdd\\01_CreateDatabase.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-18T14:15:51.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\appsettings.json",
               "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\appsettings.json",
@@ -42,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "dotnet-tools.json",
               "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\dotnet-tools.json",
               "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\dotnet-tools.json",
@@ -67,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": ".development.env",
               "DocumentMoniker": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\.development.env",
               "RelativeDocumentMoniker": "Consumo_API_Paises_Dotnet\\.development.env",
