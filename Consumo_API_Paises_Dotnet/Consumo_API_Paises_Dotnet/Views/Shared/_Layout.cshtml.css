@@ -1,0 +1,6 @@
+﻿/* Estilos propios del layout.
+   El tema general vive en wwwroot/css/site.css. */
+
+.app-header-text {
+  min-width: 0;
+}

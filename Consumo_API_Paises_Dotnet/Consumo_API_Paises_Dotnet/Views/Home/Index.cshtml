@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+    ViewData["HeaderTitle"] = "Consumo API Países";
+    ViewData["Subtitle"] = "Taller de consumo de API · Patrón MVC";
+}
+
+<section class="app-panel app-form-col">
+    <h2 class="app-panel-title">Bienvenido</h2>
+    <p class="app-panel-subtitle">
+        Aplicación ASP.NET Core MVC para consultar la API REST Countries y administrar
+        los países almacenados en SQL Server.
+    </p>
+
+    <div class="app-toolbar-group">
+        <a asp-controller="Pais" asp-action="Index" class="btn-app btn-app-primary">Ir al inicio</a>
+        <a asp-controller="Pais" asp-action="Lista" class="btn-app btn-app-muted">Ver listado</a>
+    </div>
+</section>

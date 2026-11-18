@@ -1,0 +1,55 @@
+@model Consumo_API_Paises_Dotnet.Models.Pais
+
+@{
+    ViewData["Title"] = "Consultar País en la API";
+    ViewData["HeaderTitle"] = "Consultar país en la API";
+    ViewData["Subtitle"] = "REST Countries v5 · Búsqueda por nombre";
+}
+
+<section class="app-panel">
+    <h2 class="app-panel-title">Búsqueda directa en la API</h2>
+    <p class="app-panel-subtitle">
+        Actividad 1: consume <code>https://api.restcountries.com/countries/v5/name?q={nombre}</code>
+        para un país específico, por ejemplo <em>ecuador</em>.
+    </p>
+
+    <form asp-action="BuscarPais" method="post" class="app-filter">
+        <div class="app-filter-field app-filter-field--grow">
+            <label for="nombrePais">Nombre del país</label>
+            <input id="nombrePais" type="text" name="nombre" class="form-control" placeholder="Ej.: Ecuador" />
+        </div>
+        <button type="submit" class="btn-app btn-app-sky">Consultar</button>
+        <a asp-action="Index" class="btn-app btn-app-muted">Volver</a>
+    </form>
+</section>
+
+@if (ViewBag.Error != null)
+{
+    <div class="app-alert app-alert-danger">@ViewBag.Error</div>
+}
+
+@if (Model != null)
+{
+    <div class="app-alert app-alert-success">Resultado obtenido de la API:</div>
+
+    <section class="app-panel app-form-col">
+        <h2 class="app-panel-title">@Model.Nombre</h2>
+
+        <dl class="app-details">
+            <dt>Nombre</dt>
+            <dd>@Model.Nombre</dd>
+            <dt>Capital</dt>
+            <dd>@Model.Capital</dd>
+            <dt>Región</dt>
+            <dd>@Model.Region</dd>
+            <dt>Subregión</dt>
+            <dd>@Model.SubRegion</dd>
+            <dt>Población</dt>
+            <dd>@Model.Poblacion.ToString("N0")</dd>
+            <dt>Área</dt>
+            <dd>@Model.Area.ToString("N2") km²</dd>
+            <dt>Moneda</dt>
+            <dd>@Model.Moneda</dd>
+        </dl>
+    </section>
+}

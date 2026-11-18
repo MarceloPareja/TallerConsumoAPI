@@ -1,0 +1,33 @@
+@model Consumo_API_Paises_Dotnet.Models.Pais
+
+@{
+    ViewData["Title"] = "Detalle del País";
+    ViewData["HeaderTitle"] = "Detalle del país";
+    ViewData["Subtitle"] = "Información almacenada en la base de datos";
+}
+
+<section class="app-panel app-form-col">
+    <h2 class="app-panel-title">@Model.Nombre</h2>
+
+    <dl class="app-details">
+        <dt>Nombre</dt>
+        <dd>@Model.Nombre</dd>
+        <dt>Capital</dt>
+        <dd>@Model.Capital</dd>
+        <dt>Región</dt>
+        <dd>@Model.Region</dd>
+        <dt>Subregión</dt>
+        <dd>@Model.SubRegion</dd>
+        <dt>Población</dt>
+        <dd>@Model.Poblacion.ToString("N0")</dd>
+        <dt>Área</dt>
+        <dd>@Model.Area.ToString("N2") km²</dd>
+        <dt>Moneda</dt>
+        <dd>@Model.Moneda</dd>
+    </dl>
+
+    <div class="app-form-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-app btn-app-primary">Editar</a>
+        <a asp-action="Lista" class="btn-app btn-app-muted">Volver</a>
+    </div>
+</section>

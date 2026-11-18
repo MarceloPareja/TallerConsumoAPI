@@ -1,0 +1,63 @@
+@model Consumo_API_Paises_Dotnet.Models.Pais
+
+@{
+    ViewData["Title"] = "Editar País";
+    ViewData["HeaderTitle"] = "Editar país";
+    ViewData["Subtitle"] = "Actualización del registro seleccionado";
+}
+
+<section class="app-panel app-form-col">
+    <h2 class="app-panel-title">Datos del país</h2>
+
+    <form asp-action="Edit" method="post" class="app-form">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="app-alert app-alert-danger"></div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Capital" class="form-label"></label>
+                <input asp-for="Capital" class="form-control" />
+                <span asp-validation-for="Capital" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Region" class="form-label"></label>
+                <input asp-for="Region" class="form-control" />
+                <span asp-validation-for="Region" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="SubRegion" class="form-label"></label>
+                <input asp-for="SubRegion" class="form-control" />
+                <span asp-validation-for="SubRegion" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Poblacion" class="form-label"></label>
+                <input asp-for="Poblacion" class="form-control" />
+                <span asp-validation-for="Poblacion" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Area" class="form-label"></label>
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Moneda" class="form-label"></label>
+                <input asp-for="Moneda" class="form-control" />
+                <span asp-validation-for="Moneda" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="app-form-actions">
+            <button type="submit" class="btn-app btn-app-primary">Actualizar</button>
+            <a asp-action="Lista" class="btn-app btn-app-muted">Cancelar</a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

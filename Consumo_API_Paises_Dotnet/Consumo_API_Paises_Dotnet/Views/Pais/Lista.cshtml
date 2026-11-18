@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Consumo_API_Paises_Dotnet.Models.Pais>
+
+@{
+    ViewData["Title"] = "Listado de Países";
+    ViewData["HeaderTitle"] = "Países · Taller de consumo de API";
+    ViewData["Subtitle"] = "REST Countries v5 · Patrón MVC";
+
+    var regiones = ViewBag.Regiones as List<string> ?? new List<string>();
+    var numeroFila = 0;
+}
+
+@section HeaderActions {
+    <a asp-action="Lista" class="btn-app btn-app-navy btn-app-sm">Limpiar</a>
+}
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="app-alert app-alert-success">@TempData["Mensaje"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="app-alert app-alert-danger">@TempData["Error"]</div>
+}
+
+<section class="app-toolbar">
+    <div class="app-toolbar-group">
+        <a asp-action="Create" class="btn-app btn-app-primary">Nuevo ingreso de país</a>
+        <a asp-action="Lista" class="btn-app btn-app-muted" title="Volver a cargar el listado">Actualizar</a>
+        <button type="button" class="btn-app btn-app-muted" title="Seleccione un país de la tabla para eliminarlo">Eliminar</button>
+    </div>
+    <div class="app-toolbar-group">
+        <a asp-action="Importar" class="btn-app btn-app-sky">Importar todos</a>
+        <a asp-action="Lista" class="btn-app btn-app-muted">Listar BD</a>
+        <a asp-action="Reportes" class="btn-app btn-app-muted">Reportes</a>
+    </div>
+</section>
+
+<form method="get" asp-action="Lista" class="app-filter">
+    <div class="app-filter-field app-filter-field--grow">
+        <label for="filtroNombre">Buscar por nombre:</label>
+        <input id="filtroNombre" type="text" name="nombre" value="@ViewBag.Nombre" class="form-control" placeholder="Ej.: Ecuador" />
+    </div>
+    <button type="submit" class="btn-app btn-app-sky">Buscar</button>
+
+    <div class="app-filter-field">
+        <label for="filtroRegion">Región:</label>
+        <select id="filtroRegion" name="region" class="form-select">
+            <option value="">Todas</option>
+            @foreach (var r in regiones)
+            {
+                <option value="@r" selected="@(r == (string?)ViewBag.Region ? "selected" : null)">@r</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn-app btn-app-primary">Filtrar</button>
+
+    <div class="app-filter-field">
+        <label for="filtroCapital">Capital:</label>
+        <input id="filtroCapital" type="text" name="capital" value="@ViewBag.Capital" class="form-control" placeholder="Buscar por capital" />
+    </div>
+
+    <div class="app-filter-field">
+        <label for="filtroOrden">Ordenar por:</label>
+        <select id="filtroOrden" name="orden" class="form-select">
+            <option value="">Región</option>
+            <option value="nombre" selected="@((string?)ViewBag.Orden == "nombre" ? "selected" : null)">Nombre (A-Z)</option>
+            <option value="nombre_desc" selected="@((string?)ViewBag.Orden == "nombre_desc" ? "selected" : null)">Nombre (Z-A)</option>
+            <option value="poblacion" selected="@((string?)ViewBag.Orden == "poblacion" ? "selected" : null)">Población (mayor)</option>
+            <option value="poblacion_asc" selected="@((string?)ViewBag.Orden == "poblacion_asc" ? "selected" : null)">Población (menor)</option>
+            <option value="area" selected="@((string?)ViewBag.Orden == "area" ? "selected" : null)">Área (mayor)</option>
+        </select>
+    </div>
+</form>
+
+<div class="table-scroll">
+    <table class="table-app">
+        <thead>
+            <tr>
+                <th class="col-num"></th>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Región</th>
+                <th>Subregión</th>
+                <th class="col-number">Población</th>
+                <th class="col-number">Área (km²)</th>
+                <th>Moneda</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            numeroFila++;
+            <tr>
+                <td class="col-num">@numeroFila</td>
+                <td>@item.Nombre</td>
+                <td>@item.Capital</td>
+                <td>@item.Region</td>
+                <td>@item.SubRegion</td>
+                <td class="col-number">@item.Poblacion.ToString("N0")</td>
+                <td class="col-number">@item.Area.ToString("N2")</td>
+                <td>@item.Moneda</td>
+                <td class="col-actions">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-app btn-app-sky btn-app-sm">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-app btn-app-outline btn-app-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-app btn-app-danger btn-app-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @if (!Model.Any())
+    {
+        <div class="table-empty">
+            No hay países registrados con los criterios indicados. Use el botón
+            <strong>Importar todos</strong> para cargar la información.
+        </div>
+    }
+</div>

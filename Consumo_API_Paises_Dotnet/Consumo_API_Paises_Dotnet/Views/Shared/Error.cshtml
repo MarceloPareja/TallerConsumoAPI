@@ -1,0 +1,23 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    ViewData["HeaderTitle"] = "Se produjo un error";
+    ViewData["Subtitle"] = "No fue posible procesar la solicitud";
+}
+
+<section class="app-panel app-form-col">
+    <h2 class="app-panel-title text-danger">Error</h2>
+    <p class="mb-3">Ocurrió un error mientras se procesaba su solicitud.</p>
+
+    @if (Model.ShowRequestId)
+    {
+        <p class="mb-3">
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <div class="app-alert app-alert-warning mb-0">
+        En modo <strong>Development</strong> se muestra información detallada del error.
+        No habilite ese entorno en aplicaciones publicadas.
+    </div>
+</section>

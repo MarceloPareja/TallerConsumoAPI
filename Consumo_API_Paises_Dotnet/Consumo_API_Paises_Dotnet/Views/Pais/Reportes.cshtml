@@ -1,0 +1,76 @@
+@model Consumo_API_Paises_Dotnet.Models.ReportesViewModel
+
+@{
+    ViewData["Title"] = "Reportes";
+    ViewData["HeaderTitle"] = "Reportes";
+    ViewData["Subtitle"] = "Estadísticas de los países registrados";
+}
+
+<section class="app-panel">
+    <h2 class="app-panel-title">Reporte 1: Cantidad de países por región</h2>
+
+    <div class="table-scroll">
+        <table class="table-app table-app-sm">
+            <thead>
+                <tr>
+                    <th>Región</th>
+                    <th class="col-number">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.PaisesPorRegion)
+            {
+                <tr>
+                    <td>@item.Region</td>
+                    <td class="col-number">@item.Total</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="app-panel">
+    <h2 class="app-panel-title">Reporte 2: País más poblado</h2>
+
+    @if (Model.PaisMasPoblado != null)
+    {
+        <p class="mb-0">
+            <strong>@Model.PaisMasPoblado.Nombre</strong> —
+            @Model.PaisMasPoblado.Poblacion.ToString("N0") habitantes
+            (Región: @Model.PaisMasPoblado.Region)
+        </p>
+    }
+    else
+    {
+        <p class="mb-0 text-muted">No hay datos registrados.</p>
+    }
+</section>
+
+<section class="app-panel">
+    <h2 class="app-panel-title">Reporte 3: Promedio poblacional por región</h2>
+
+    <div class="table-scroll">
+        <table class="table-app table-app-sm">
+            <thead>
+                <tr>
+                    <th>Región</th>
+                    <th class="col-number">Promedio de población</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.PromedioPorRegion)
+            {
+                <tr>
+                    <td>@item.Region</td>
+                    <td class="col-number">@item.PromedioPoblacion.ToString("N0")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="app-toolbar-group">
+    <a asp-action="Lista" class="btn-app btn-app-muted">Volver al listado</a>
+</div>

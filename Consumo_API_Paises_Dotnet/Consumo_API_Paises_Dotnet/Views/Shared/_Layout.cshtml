@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Consumo API Países</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Consumo_API_Paises_Dotnet.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @{
+        var accionActual = ViewContext.RouteData.Values["action"]?.ToString();
+        var tituloCabecera = ViewData["HeaderTitle"] as string ?? ViewData["Title"] as string ?? "Consumo API Países";
+        var subtituloCabecera = ViewData["Subtitle"] as string;
+    }
+    <div class="app-shell">
+        <header class="app-header">
+            <div class="app-header-inner">
+                <div class="app-header-text">
+                    <h1>@tituloCabecera</h1>
+                    @if (!string.IsNullOrWhiteSpace(subtituloCabecera))
+                    {
+                        <p>@subtituloCabecera</p>
+                    }
+                </div>
+                <div class="app-header-actions">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <span class="app-header-user">@User.Identity.Name</span>
+                        <form asp-controller="Cuenta" asp-action="CerrarSesion" method="post" class="d-flex m-0">
+                            <button type="submit" class="btn-app btn-app-navy btn-app-sm">Cerrar sesión</button>
+                        </form>
+                    }
+                    @await RenderSectionAsync("HeaderActions", required: false)
+                </div>
+            </div>
+        </header>
+
+        <nav class="app-nav">
+            <div class="app-nav-inner">
+                <a class="app-nav-link @(accionActual == "Index" ? "active" : "")"
+                   asp-area="" asp-controller="Pais" asp-action="Index">Inicio</a>
+                <a class="app-nav-link @(accionActual is "Lista" or "Create" or "Edit" or "Details" or "Delete" ? "active" : "")"
+                   asp-area="" asp-controller="Pais" asp-action="Lista">Países</a>
+                <a class="app-nav-link @(accionActual == "BuscarPais" ? "active" : "")"
+                   asp-area="" asp-controller="Pais" asp-action="BuscarPais">Consultar API</a>
+                <a class="app-nav-link @(accionActual == "Reportes" ? "active" : "")"
+                   asp-area="" asp-controller="Pais" asp-action="Reportes">Reportes</a>
+            </div>
+        </nav>
+
+        <main role="main" class="app-main">
+            @RenderBody()
+        </main>
+
+        <footer class="app-footer">
+            <div class="app-footer-inner">
+                &copy; 2026 - Consumo_API_Paises_Dotnet -
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,32 @@
+@model Consumo_API_Paises_Dotnet.Models.Pais
+
+@{
+    ViewData["Title"] = "Eliminar País";
+    ViewData["HeaderTitle"] = "Eliminar país";
+    ViewData["Subtitle"] = "Confirmación de borrado del registro";
+}
+
+<div class="app-alert app-alert-warning">
+    ¿Está seguro de eliminar el siguiente registro? Esta acción no se puede deshacer.
+</div>
+
+<section class="app-panel app-form-col">
+    <h2 class="app-panel-title">@Model.Nombre</h2>
+
+    <dl class="app-details">
+        <dt>Nombre</dt>
+        <dd>@Model.Nombre</dd>
+        <dt>Capital</dt>
+        <dd>@Model.Capital</dd>
+        <dt>Región</dt>
+        <dd>@Model.Region</dd>
+        <dt>Población</dt>
+        <dd>@Model.Poblacion.ToString("N0")</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" class="app-form-actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn-app btn-app-danger">Eliminar</button>
+        <a asp-action="Lista" class="btn-app btn-app-muted">Cancelar</a>
+    </form>
+</section>

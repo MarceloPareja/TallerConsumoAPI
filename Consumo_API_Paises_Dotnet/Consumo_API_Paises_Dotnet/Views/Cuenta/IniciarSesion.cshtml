@@ -1,0 +1,44 @@
+@model Consumo_API_Paises_Dotnet.Models.LoginViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Acceso al sistema";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Consumo API Países</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="login-page">
+    <main class="login-window">
+        <header class="login-header">
+            <h1>Acceso al sistema</h1>
+            <p>Taller de consumo de API · Países</p>
+        </header>
+        <form asp-action="IniciarSesion" method="post" class="login-form">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+            <div class="login-field">
+                <label asp-for="Usuario"></label>
+                <input asp-for="Usuario" class="form-control" autocomplete="username" autofocus />
+                <span asp-validation-for="Usuario" class="text-danger small"></span>
+            </div>
+            <div class="login-field">
+                <label asp-for="Clave"></label>
+                <input asp-for="Clave" class="form-control" autocomplete="current-password" />
+                <span asp-validation-for="Clave" class="text-danger small"></span>
+            </div>
+            <div class="login-actions">
+                <a asp-controller="Home" asp-action="Index" class="btn-app btn-app-muted">Cancelar</a>
+                <button type="submit" class="btn-app btn-app-primary">Ingresar</button>
+            </div>
+        </form>
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
