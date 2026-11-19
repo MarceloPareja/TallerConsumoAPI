@@ -1,0 +1,2 @@
+# Ejecutables de Bash deben conservar saltos de linea LF (Linux/macOS)
+*.sh text eol=lf

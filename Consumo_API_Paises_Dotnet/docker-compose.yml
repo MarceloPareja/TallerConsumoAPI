@@ -18,5 +18,19 @@ services:
       start_period: 30s
     restart: unless-stopped
 
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_taller_init
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: "Password123!"
+    volumes:
+      - ./Consumo_API_Paises_Dotnet/Bdd:/bdd:ro
+      - ./scripts/init-db.sh:/scripts/init-db.sh:ro
+    entrypoint: ["/bin/bash", "/scripts/init-db.sh"]
+    restart: "no"
+
 volumes:
   sqlserver_data:

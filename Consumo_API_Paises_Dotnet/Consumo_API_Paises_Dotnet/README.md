@@ -11,32 +11,64 @@ Implementación de las secciones 1 a 18 del taller usando **ASP.NET Core MVC (.N
 ## Estructura
 
 ```
-Consumo_API_Paises_Dotnet/
-├── Bdd/                          # Scripts SQL (base de datos y reportes)
-├── Controllers/PaisController.cs # CRUD, búsquedas, filtros y reportes
-├── Migrations/                   # Migraciones de EF Core
-├── Models/
-│   ├── Pais.cs
-│   ├── AppDbContext.cs
-│   └── ReportesViewModel.cs
-├── Services/
-│   ├── IPaisService.cs
-│   └── PaisApiService.cs         # Consumo de REST Countries v5
-├── Views/Pais/                   # Index, Lista, Create, Edit, Delete, Details, BuscarPais, Reportes
-├── .development.env              # RESTCOUNTRIES_API_KEY (no se versiona)
-├── appsettings.json              # Cadena de conexión SqlServerConnection
-└── Program.cs                    # DI: DbContext + HttpClient tipado
+Consumo_API_Paises_Dotnet/        # Raíz del repositorio
+├── docker-compose.yml            # SQL Server + inicialización automática (db-init)
+├── scripts/init-db.sh            # Automatización: crea ApiPaisesDB y aplica el esquema
+├── .gitattributes                # Fuerza LF en los scripts .sh
+└── Consumo_API_Paises_Dotnet/    # Proyecto ASP.NET Core MVC
+    ├── Bdd/                      # Scripts SQL (base de datos y reportes)
+    ├── Controllers/PaisController.cs # CRUD, búsquedas, filtros y reportes
+    ├── Migrations/               # Migraciones de EF Core
+    ├── Models/
+    │   ├── Pais.cs
+    │   ├── AppDbContext.cs
+    │   └── ReportesViewModel.cs
+    ├── Services/
+    │   ├── IPaisService.cs
+    │   └── PaisApiService.cs     # Consumo de REST Countries v5
+    ├── Views/Pais/               # Index, Lista, Create, Edit, Delete, Details, BuscarPais, Reportes
+    ├── .development.env          # RESTCOUNTRIES_API_KEY (no se versiona)
+    ├── appsettings.json          # Cadena de conexión SqlServerConnection
+    └── Program.cs                # DI: DbContext + HttpClient tipado
 ```
 
 ## Puesta en marcha
 
-1. Levantar SQL Server (solo la base de datos):
+1. Levantar SQL Server con inicialización automática de la base de datos:
 
    ```bash
    docker compose up -d
    ```
 
-2. Aplicar migraciones (crea `ApiPaisesDB` y la tabla `Paises`):
+   `docker compose` levanta el contenedor `sqlserver` y, en cuanto pasa su
+   `healthcheck`, ejecuta el servicio `db-init` (`scripts/init-db.sh`), que:
+
+   - espera a que SQL Server acepte conexiones,
+   - crea la base de datos `ApiPaisesDB` si no existe,
+   - aplica `Bdd/03_ApiPaisesDB_Migrations.sql`, creando la tabla `Paises` y el
+     historial `__EFMigrationsHistory` con el mismo esquema que EF Core.
+
+   Para verificar que la inicialización terminó correctamente:
+
+   ```bash
+   docker compose logs db-init
+   ```
+
+   La automatización es idempotente: si la base de datos ya existe en el volumen
+   `sqlserver_data`, los scripts no vuelven a crear nada. Para reinicializar desde
+   cero (borra los datos):
+
+   ```bash
+   docker compose down -v
+   docker compose up -d
+   ```
+
+   > **Nota:** el script `scripts/init-db.sh` debe conservar saltos de línea LF
+   > (el `.gitattributes` del repositorio lo garantiza) para poder ejecutarse dentro
+   > del contenedor Linux.
+
+2. *(Opcional)* Aplicar migraciones manualmente con EF Core, solo si se trabaja sin
+   Docker o se agregaron migraciones nuevas:
 
    ```bash
    cd Consumo_API_Paises_Dotnet
@@ -44,7 +76,9 @@ Consumo_API_Paises_Dotnet/
    dotnet ef database update
    ```
 
-   Alternativa manual: ejecutar `Bdd/01_CreateDatabase.sql`.
+   La alternativa manual de la guía original (`Bdd/01_CreateDatabase.sql`) sigue
+   disponible, pero no debe combinarse con la automatización: ese script crea
+   `Paises` con columnas `NULL` y entraría en conflicto con el esquema de EF Core.
 
 3. Configurar la clave de la API en `.development.env`:
 
