@@ -1,0 +1,15 @@
+.cache/
+.artifacts/
+.env
+.env.*
+!.env.example
+**/bin/
+**/obj/
+**/.vs/
+**/target/
+**/*.csproj.user
+**/.development.env
+**/config.properties
+!**/config.properties.example
+postman/.dependencies/
+*.ndjson

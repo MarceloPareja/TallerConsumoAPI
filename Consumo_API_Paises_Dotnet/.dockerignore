@@ -1,0 +1,13 @@
+**/bin
+**/obj
+.vs
+.git
+**/*.user
+**/*.docx
+**/Screen Models
+**/.development.env
+**/.env
+**/.env.*
+**/appsettings.Local.json
+.cache
+.artifacts

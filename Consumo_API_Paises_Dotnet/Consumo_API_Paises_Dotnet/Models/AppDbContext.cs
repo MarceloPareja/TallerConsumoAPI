@@ -10,5 +10,11 @@ namespace Consumo_API_Paises_Dotnet.Models
         }
 
         public DbSet<Pais> Paises { get; set; }
+        public DbSet<Universidad> Universidades { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Universidad>().HasIndex(u => new { u.Pais, u.Nombre }).IsUnique();
+        }
     }
 }

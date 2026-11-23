@@ -19,7 +19,9 @@
     </div>
 
     <div class="app-toolbar-group">
-        <a asp-action="Importar" class="btn-app btn-app-sky">Importar información</a>
+        <form asp-action="Importar" method="post" class="d-inline-block m-0">
+            <button class="btn-app btn-app-sky">Importar información</button>
+        </form>
         <a asp-action="Lista" class="btn-app btn-app-primary">Ver listado</a>
         <a asp-action="BuscarPais" class="btn-app btn-app-outline">Consultar país en la API</a>
         <a asp-action="Reportes" class="btn-app btn-app-muted">Reportes</a>

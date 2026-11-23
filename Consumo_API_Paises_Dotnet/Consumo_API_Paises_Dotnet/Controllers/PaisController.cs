@@ -9,11 +9,13 @@ namespace Consumo_API_Paises_Dotnet.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IPaisService _paisService;
+        private readonly ImportacionService _importador;
 
-        public PaisController(AppDbContext context, IPaisService paisService)
+        public PaisController(AppDbContext context, IPaisService paisService, ImportacionService importador)
         {
             _context = context;
             _paisService = paisService;
+            _importador = importador;
         }
 
         // ===== Sección 14: Acciones principales =====
@@ -27,33 +29,19 @@ namespace Consumo_API_Paises_Dotnet.Controllers
         /// <summary>
         /// Consume REST Countries y guarda la información en SQL Server.
         /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Importar()
         {
-            // Evita volver a consultar la API y duplicar registros si ya se importaron.
-            if (await _context.Paises.AnyAsync())
-            {
-                TempData["Mensaje"] = "La base de datos ya contiene países. No es necesario importarlos nuevamente.";
-                return RedirectToAction(nameof(Lista));
-            }
-
             try
             {
-                var paises = await _paisService.ObtenerPaisesAsync();
-
-                if (paises.Count == 0)
-                {
-                    TempData["Mensaje"] = "La API no devolvió información.";
-                    return RedirectToAction(nameof(Lista));
-                }
-
-                _context.Paises.AddRange(paises);
-                await _context.SaveChangesAsync();
-
-                TempData["Mensaje"] = $"Se importaron {paises.Count} países correctamente.";
+                var total = await _importador.ImportarPaisesAsync();
+                TempData["Mensaje"] = $"Se importaron {total} países nuevos. Los existentes se conservaron.";
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex) when (ex is HttpRequestException or DbUpdateException or System.ComponentModel.DataAnnotations.ValidationException)
             {
-                TempData["Error"] = ex.Message;
+                TempData["Error"] = "No se pudo importar. Compruebe la API y la base de datos e intente nuevamente.";
+                HttpContext.RequestServices.GetRequiredService<ILogger<PaisController>>().LogWarning(ex, "Error importando países");
             }
 
             return RedirectToAction(nameof(Lista));
@@ -253,6 +241,7 @@ namespace Consumo_API_Paises_Dotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Pais pais)
         {
+            NormalizarCampos(pais);
             if (!ModelState.IsValid)
             {
                 return View(pais);
@@ -275,6 +264,7 @@ namespace Consumo_API_Paises_Dotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Pais pais)
         {
+            NormalizarCampos(pais);
             if (id != pais.Id)
             {
                 return BadRequest();
@@ -323,6 +313,15 @@ namespace Consumo_API_Paises_Dotnet.Controllers
             }
 
             return RedirectToAction(nameof(Lista));
+        }
+
+        private static void NormalizarCampos(Pais pais)
+        {
+            pais.Nombre = pais.Nombre?.Trim() ?? string.Empty;
+            pais.Capital = pais.Capital?.Trim() ?? string.Empty;
+            pais.Region = pais.Region?.Trim() ?? string.Empty;
+            pais.SubRegion = pais.SubRegion?.Trim() ?? string.Empty;
+            pais.Moneda = pais.Moneda?.Trim() ?? string.Empty;
         }
 
         // ===== Actividad 5: Reportes =====

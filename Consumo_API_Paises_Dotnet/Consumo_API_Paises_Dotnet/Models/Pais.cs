@@ -19,8 +19,10 @@ namespace Consumo_API_Paises_Dotnet.Models
         [StringLength(100)]
         public string SubRegion { get; set; } = string.Empty;
 
+        [Range(0, long.MaxValue)]
         public long Poblacion { get; set; }
 
+        [Range(0, double.MaxValue)]
         public double Area { get; set; }
 
         [StringLength(100)]

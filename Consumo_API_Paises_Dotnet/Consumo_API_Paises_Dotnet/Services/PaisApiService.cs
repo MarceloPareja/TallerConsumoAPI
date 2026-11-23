@@ -14,7 +14,6 @@ namespace Consumo_API_Paises_Dotnet.Services
     public class PaisApiService : IPaisService
     {
         // Solo se solicitan los campos que necesita el modelo.
-        // Solo se solicitan los campos que necesita el modelo.
         private const string Campos =
             "names.common,capitals,region,subregion,population,area,currencies";
 
@@ -28,9 +27,7 @@ namespace Consumo_API_Paises_Dotnet.Services
         public PaisApiService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _apiKey = configuration["RESTCOUNTRIES_API_KEY"]
-                ?? throw new InvalidOperationException(
-                    "Falta la variable RESTCOUNTRIES_API_KEY en el archivo .development.env");
+            _apiKey = configuration["RESTCOUNTRIES_API_KEY"] is { Length: > 0 } key ? key : "rc_live_demo";
         }
 
         /// <summary>
@@ -40,14 +37,16 @@ namespace Consumo_API_Paises_Dotnet.Services
         {
             var paises = new List<Pais>();
             var offset = 0;
+            var completa = false;
 
-            while (true)
+            while (offset < 10000)
             {
                 var url = $"{RecursoPaises}?limit={LimitePagina}&offset={offset}&response_fields={Campos}";
                 var respuesta = await ObtenerObjetosAsync(url);
 
-                if (respuesta?.Objetos is null || respuesta.Objetos.Count == 0)
+                if (respuesta.Objetos.Count == 0)
                 {
+                    completa = true;
                     break;
                 }
 
@@ -56,10 +55,12 @@ namespace Consumo_API_Paises_Dotnet.Services
 
                 if (respuesta.Meta?.More != true)
                 {
+                    completa = true;
                     break;
                 }
             }
 
+            if (!completa) throw new HttpRequestException("La API superó el límite de páginas. No se guardó una carga parcial.");
             return paises;
         }
 
@@ -74,40 +75,46 @@ namespace Consumo_API_Paises_Dotnet.Services
             }
 
             var url = $"{RecursoPaises}/name?q={Uri.EscapeDataString(nombre.Trim())}&response_fields={Campos}";
-            var respuesta = await ObtenerObjetosAsync(url);
+            var respuesta = await ObtenerObjetosAsync(url, permitirNoEncontrado: true);
 
             var primero = respuesta?.Objetos?.FirstOrDefault();
             return primero is null ? null : Mapear(primero);
         }
 
-        private async Task<DataDto?> ObtenerObjetosAsync(string url)
+        private async Task<DataDto> ObtenerObjetosAsync(string url, bool permitirNoEncontrado = false)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
-
-            using var response = await _httpClient.SendAsync(request);
-
-            if (response.StatusCode == HttpStatusCode.NotFound)
+            try
             {
-                return null;
+                using var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+
+                using var response = await _httpClient.SendAsync(request);
+
+                if (response.StatusCode == HttpStatusCode.NotFound && permitirNoEncontrado)
+                {
+                    return new DataDto { Objetos = [] };
+                }
+
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new HttpRequestException(
+                        "La API rechazó la clave RESTCOUNTRIES_API_KEY (401). Verifique RESTCOUNTRIES_API_KEY en .env.");
+                }
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new HttpRequestException(
+                        $"Error al consumir REST Countries: {(int)response.StatusCode} {response.ReasonPhrase}");
+                }
+
+                var resultado = await response.Content
+                    .ReadFromJsonAsync<RespuestaDto>(OpcionesJson());
+
+                return resultado?.Data is { Objetos: not null } data ? data
+                    : throw new HttpRequestException("REST Countries devolvió una respuesta sin datos válidos.");
             }
-
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                throw new HttpRequestException(
-                    "La API rechazó la clave RESTCOUNTRIES_API_KEY (401). Verifique el archivo .development.env.");
-            }
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException(
-                    $"Error al consumir REST Countries: {(int)response.StatusCode} {response.ReasonPhrase}");
-            }
-
-            var resultado = await response.Content
-                .ReadFromJsonAsync<RespuestaDto>(OpcionesJson());
-
-            return resultado?.Data;
+            catch (JsonException ex) { throw new HttpRequestException("REST Countries devolvió JSON inválido.", ex); }
+            catch (TaskCanceledException ex) { throw new HttpRequestException("REST Countries agotó el tiempo de espera.", ex); }
         }
 
         private static JsonSerializerOptions OpcionesJson() => new()
@@ -141,7 +148,7 @@ namespace Consumo_API_Paises_Dotnet.Services
         private sealed class DataDto
         {
             [JsonPropertyName("objects")]
-            public List<RestCountryDto>? Objetos { get; set; }
+            public List<RestCountryDto> Objetos { get; set; } = [];
 
             [JsonPropertyName("meta")]
             public MetaDto? Meta { get; set; }
