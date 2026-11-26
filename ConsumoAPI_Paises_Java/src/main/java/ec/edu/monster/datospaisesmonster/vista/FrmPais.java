@@ -82,6 +82,10 @@ public class FrmPais extends JFrame {
     private void initComponents() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Taller Consumo API - Países (MVC)");
+        java.awt.Image icono = Tema.iconoVentana();
+        if (icono != null) {
+            setIconImage(icono);
+        }
         setLayout(new BorderLayout());
         getContentPane().setBackground(Tema.FONDO);
 
@@ -146,6 +150,7 @@ public class FrmPais extends JFrame {
         panelDerecha.setOpaque(false);
         panelDerecha.add(btnLimpiar);
 
+        cabecera.add(Tema.panelMarca(46), BorderLayout.WEST);
         cabecera.add(textos, BorderLayout.CENTER);
         cabecera.add(panelDerecha, BorderLayout.EAST);
         return cabecera;
@@ -178,7 +183,7 @@ public class FrmPais extends JFrame {
         btnImportar.setToolTipText("Descarga todos los países de la API y los guarda en MySQL");
         btnListar = new Tema.Boton("Listar BD", new Color(0x6C, 0x7A, 0x95));
         btnListar.setToolTipText("Vuelve a cargar la tabla desde MySQL");
-        btnReportes = new Tema.Boton("Reportes", new Color(0x6C, 0x7A, 0x95));
+        btnReportes = new Tema.Boton("Reportes", Tema.COLOR_4);
         btnReportes.setToolTipText("Muestra los reportes estadísticos");
 
         btnBorrar = new Tema.Boton("Borrar datos", new Color(0xC9, 0x4F, 0x4F));

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Consumo API Países</title>
+    <link rel="icon" type="image/jpeg" href="~/img/icono-app.jpg" />
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -19,12 +20,15 @@
     <div class="app-shell">
         <header class="app-header">
             <div class="app-header-inner">
-                <div class="app-header-text">
-                    <h1>@tituloCabecera</h1>
-                    @if (!string.IsNullOrWhiteSpace(subtituloCabecera))
-                    {
-                        <p>@subtituloCabecera</p>
-                    }
+                <div class="app-brand">
+                    <img src="~/img/icono-app.jpg" alt="Icono de la aplicación" class="app-logo" />
+                    <div class="app-header-text">
+                        <h1>@tituloCabecera</h1>
+                        @if (!string.IsNullOrWhiteSpace(subtituloCabecera))
+                        {
+                            <p>@subtituloCabecera</p>
+                        }
+                    </div>
                 </div>
                 <div class="app-header-actions">
                     @if (User.Identity?.IsAuthenticated == true)

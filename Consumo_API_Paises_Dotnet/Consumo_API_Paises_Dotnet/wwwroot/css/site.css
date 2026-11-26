@@ -9,6 +9,8 @@
   --app-sky: #53b7e8;
   --app-sky-dark: #3ea6d8;
   --app-teal: #3ec9b7;
+  --app-purple: #985fd4;
+  --app-purple-dark: #8347bd;
   --app-navy: #1e2a4a;
   --app-navy-dark: #16203a;
   --app-muted: #9aa3b2;
@@ -20,7 +22,7 @@
   --app-ink: #2f3542;
   --app-ink-soft: #7b8494;
   --app-radius: 8px;
-  --app-gradient: linear-gradient(100deg, #4a4fe0 0%, #3d6ee4 35%, #39a8e0 68%, #3ec9b7 100%);
+  --app-gradient: linear-gradient(100deg, #4a4fe0 0%, #3d6ee4 30%, #985fd4 62%, #39a8e0 84%, #3ec9b7 100%);
 }
 
 html {
@@ -63,6 +65,25 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.4rem 1.5rem;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  min-width: 0;
+}
+
+.app-logo {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  object-position: center top;
+  background: #fff;
+  border: 2px solid rgb(255 255 255 / 70%);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(30 42 74 / 22%);
 }
 
 .app-header h1 {
@@ -235,6 +256,18 @@ a {
   color: #fff;
   background: var(--app-navy-dark);
   border-color: var(--app-navy-dark);
+}
+
+.btn-app-purple {
+  color: #fff;
+  background: var(--app-purple);
+  border-color: var(--app-purple);
+}
+
+.btn-app-purple:hover {
+  color: #fff;
+  background: var(--app-purple-dark);
+  border-color: var(--app-purple-dark);
 }
 
 .btn-app-danger {
@@ -651,6 +684,11 @@ a {
     flex-direction: column;
     align-items: stretch;
     padding: 1.1rem 1rem;
+  }
+
+  .app-logo {
+    width: 46px;
+    height: 46px;
   }
 
   .app-header-actions {
