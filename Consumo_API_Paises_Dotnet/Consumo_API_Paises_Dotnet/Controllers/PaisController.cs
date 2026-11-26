@@ -224,6 +224,36 @@ namespace Consumo_API_Paises_Dotnet.Controllers
             }
         }
 
+        /// <summary>
+        /// Vacía la tabla de países y reinicia el contador de ID para poder
+        /// importar desde cero.
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BorrarDatos()
+        {
+            try
+            {
+                var total = await _context.Paises.CountAsync();
+                if (total == 0)
+                {
+                    TempData["Mensaje"] = "La tabla de países ya está vacía.";
+                    return RedirectToAction(nameof(Lista));
+                }
+
+                await _context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE [Paises];");
+                TempData["Mensaje"] = $"Se eliminaron {total} país(es). La tabla quedó vacía y el ID vuelve a iniciar en 1.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "No se pudieron borrar los datos. Verifique la conexión a SQL Server.";
+                HttpContext.RequestServices.GetRequiredService<ILogger<PaisController>>()
+                    .LogWarning(ex, "Error borrando países");
+            }
+
+            return RedirectToAction(nameof(Lista));
+        }
+
         // ===== Actividad 2: CRUD completo =====
 
         public async Task<IActionResult> Details(int id)

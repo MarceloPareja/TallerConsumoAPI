@@ -37,6 +37,13 @@
         <form asp-action="Importar" method="post" class="d-inline-block m-0">
             <button class="btn-app btn-app-sky">Importar todos</button>
         </form>
+        <form asp-action="BorrarDatos" method="post" class="d-inline-block m-0"
+              onsubmit="return confirm('Se eliminarán TODOS los países registrados. Esta acción no se puede deshacer. ¿Desea continuar?');">
+            <button type="submit" class="btn-app btn-app-danger"
+                    title="Vacía la tabla de países y reinicia el ID en 1">
+                Borrar datos
+            </button>
+        </form>
         <a asp-action="Lista" class="btn-app btn-app-muted">Listar BD</a>
         <a asp-action="Reportes" class="btn-app btn-app-purple">Reportes</a>
     </div>

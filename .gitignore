@@ -13,3 +13,4 @@
 !**/config.properties.example
 postman/.dependencies/
 *.ndjson
+/ConsumoAPI_Paises_Java/nbproject/
