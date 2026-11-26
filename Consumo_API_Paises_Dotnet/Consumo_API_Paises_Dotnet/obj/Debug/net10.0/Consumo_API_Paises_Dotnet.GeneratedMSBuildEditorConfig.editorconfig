@@ -20,77 +20,77 @@ build_property.TargetFrameworkVersion = v10.0
 build_property.EntryPointFilePath = 
 build_property.RootNamespace = Consumo_API_Paises_Dotnet
 build_property.RootNamespace = Consumo_API_Paises_Dotnet
-build_property.ProjectDir = C:\Users\marpa\Documents\JabonConCafe\Taller_ConsumirAPI_Monster\Consumo_API_Paises_Dotnet\Consumo_API_Paises_Dotnet\
+build_property.ProjectDir = C:\Users\gmlop\Desktop\ESPE\Octavo\Arquitectura\TallerConsumoAPI\TallerConsumoAPI\Consumo_API_Paises_Dotnet\Consumo_API_Paises_Dotnet\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\marpa\Documents\JabonConCafe\Taller_ConsumirAPI_Monster\Consumo_API_Paises_Dotnet\Consumo_API_Paises_Dotnet
+build_property.MSBuildProjectDirectory = C:\Users\gmlop\Desktop\ESPE\Octavo\Arquitectura\TallerConsumoAPI\TallerConsumoAPI\Consumo_API_Paises_Dotnet\Consumo_API_Paises_Dotnet
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Cuenta/IniciarSesion.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Cuenta/IniciarSesion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEluaWNpYXJTZXNpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Home/Index.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Home/Privacy.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/BuscarPais.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/BuscarPais.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xCdXNjYXJQYWlzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Create.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Delete.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Details.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Edit.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Index.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Lista.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Lista.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xMaXN0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Reportes.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Pais/Reportes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpc1xSZXBvcnRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/Error.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/_ViewImports.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/_ViewStart.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marpa/Documents/JabonConCafe/Taller_ConsumirAPI_Monster/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/_Layout.cshtml]
+[C:/Users/gmlop/Desktop/ESPE/Octavo/Arquitectura/TallerConsumoAPI/TallerConsumoAPI/Consumo_API_Paises_Dotnet/Consumo_API_Paises_Dotnet/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gjijod4kn3

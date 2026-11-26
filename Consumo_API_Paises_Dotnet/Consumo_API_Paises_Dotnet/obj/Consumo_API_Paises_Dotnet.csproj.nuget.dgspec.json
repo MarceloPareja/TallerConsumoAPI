@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj": {}
+    "C:\\Users\\gmlop\\Desktop\\ESPE\\Octavo\\Arquitectura\\TallerConsumoAPI\\TallerConsumoAPI\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj": {
+    "C:\\Users\\gmlop\\Desktop\\ESPE\\Octavo\\Arquitectura\\TallerConsumoAPI\\TallerConsumoAPI\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj",
+        "projectUniqueName": "C:\\Users\\gmlop\\Desktop\\ESPE\\Octavo\\Arquitectura\\TallerConsumoAPI\\TallerConsumoAPI\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj",
         "projectName": "Consumo_API_Paises_Dotnet",
-        "projectPath": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj",
-        "packagesPath": "C:\\Users\\marpa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marpa\\Documents\\JabonConCafe\\Taller_ConsumirAPI_Monster\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\obj\\",
+        "projectPath": "C:\\Users\\gmlop\\Desktop\\ESPE\\Octavo\\Arquitectura\\TallerConsumoAPI\\TallerConsumoAPI\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet.csproj",
+        "packagesPath": "C:\\Users\\gmlop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gmlop\\Desktop\\ESPE\\Octavo\\Arquitectura\\TallerConsumoAPI\\TallerConsumoAPI\\Consumo_API_Paises_Dotnet\\Consumo_API_Paises_Dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gmlop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -46,7 +46,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "11.0.100"
       },
       "frameworks": {
         "net10.0": {
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\11.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
