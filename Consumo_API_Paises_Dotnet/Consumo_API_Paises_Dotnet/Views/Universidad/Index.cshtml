@@ -1,0 +1,48 @@
+@model IEnumerable<Consumo_API_Paises_Dotnet.Models.Universidad>
+@{
+    ViewData["Title"] = "Universidades";
+    ViewData["HeaderTitle"] = "Universidades";
+    ViewData["Subtitle"] = "Importación y consulta de universidades por país";
+}
+@if (TempData["Mensaje"] != null) { <div class="app-alert app-alert-success">@TempData["Mensaje"]</div> }
+@if (TempData["Error"] != null) { <div class="app-alert app-alert-danger">@TempData["Error"]</div> }
+<section class="app-panel">
+    <h2 class="app-panel-title">Importar universidades</h2>
+    <p>Ingrese el país en inglés, por ejemplo Ecuador, Spain o United States. Una nueva importación agrega únicamente universidades que no estén registradas.</p>
+    <form asp-action="Importar" method="post" class="app-filter">
+        <label for="paisImportar">País</label>
+        <input id="paisImportar" name="pais" value="@ViewBag.Pais" required maxlength="100" class="form-control" />
+        <button type="submit" class="btn-app btn-app-primary">Importar</button>
+    </form>
+</section>
+<form asp-action="Index" method="get" class="app-filter">
+    <label for="paisFiltro">País</label>
+    <input id="paisFiltro" name="pais" value="@Context.Request.Query["pais"]" class="form-control" />
+    <label for="nombreFiltro">Nombre</label>
+    <input id="nombreFiltro" name="nombre" value="@ViewBag.Nombre" class="form-control" />
+    <button class="btn-app btn-app-primary">Buscar</button>
+    <a asp-action="Index" class="btn-app btn-app-muted">Mostrar todas</a>
+</form>
+<div class="table-scroll">
+    <table class="table-app">
+        <thead><tr><th>Nombre</th><th>Dominio</th><th>Sitio web</th><th>País</th></tr></thead>
+        <tbody>
+        @foreach (var universidad in Model)
+        {
+            <tr>
+                <td>@universidad.Nombre</td><td>@universidad.Dominio</td>
+                <td>
+                @foreach (var sitio in universidad.SitioWeb.Split(", ", StringSplitOptions.RemoveEmptyEntries))
+                {
+                    if (Uri.TryCreate(sitio, UriKind.Absolute, out var uri) && (uri.Scheme == "http" || uri.Scheme == "https"))
+                    { <div><a href="@uri.AbsoluteUri" target="_blank" rel="noopener noreferrer">@sitio</a></div> }
+                    else { <div>@sitio</div> }
+                }
+                </td>
+                <td>@universidad.Pais</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @if (!Model.Any()) { <p class="table-empty">No hay universidades con esos criterios. Puede importarlas desde el formulario superior.</p> }
+</div>

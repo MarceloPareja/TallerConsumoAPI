@@ -8,7 +8,7 @@ set -euo pipefail
 SQLCMD="/opt/mssql-tools18/bin/sqlcmd"
 SERVER="${MSSQL_SERVER:-sqlserver}"
 USER="${MSSQL_USER:-sa}"
-PASSWORD="${MSSQL_SA_PASSWORD:-Password123!}"
+PASSWORD="${MSSQL_SA_PASSWORD:?Configure MSSQL_SA_PASSWORD}"
 DATABASE="${MSSQL_DATABASE:-ApiPaisesDB}"
 MAX_ATTEMPTS="${DB_INIT_MAX_ATTEMPTS:-60}"
 SLEEP_SECONDS="${DB_INIT_SLEEP_SECONDS:-2}"
@@ -45,5 +45,8 @@ fi
 log "Aplicando el esquema y el historial de migraciones de EF Core..."
 "$SQLCMD" -S "$SERVER" -U "$USER" -P "$PASSWORD" -C -b \
     -d "$DATABASE" -i "$MIGRATIONS_SCRIPT"
+
+"$SQLCMD" -S "$SERVER" -U "$USER" -P "$PASSWORD" -C -b \
+    -d "$DATABASE" -i /bdd/04_Universidades.sql
 
 log "Base de datos '${DATABASE}' inicializada correctamente."

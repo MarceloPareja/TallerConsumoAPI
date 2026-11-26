@@ -1,36 +1,44 @@
+name: taller-paises-dotnet
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sql_server_taller
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "Password123!"
-      MSSQL_PID: "Developer"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Copia .env.example como .env y configura MSSQL_SA_PASSWORD}
     ports:
-      - "1433:1433"
+      - "127.0.0.1:${SQLSERVER_PORT:-1433}:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\" || exit 1"]
-      interval: 15s
-      timeout: 10s
-      retries: 10
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q 'SELECT 1' -b -o /dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
       start_period: 30s
     restart: unless-stopped
-
-  db-init:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sql_server_taller_init
+  app:
+    build: .
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DB_HOST: sqlserver,1433
+      DB_NAME: ApiPaisesDB
+      DB_USER: sa
+      DB_PASSWORD: ${MSSQL_SA_PASSWORD:?Configura MSSQL_SA_PASSWORD}
+      RESTCOUNTRIES_API_KEY: ${RESTCOUNTRIES_API_KEY:-rc_live_demo}
+      RESTCOUNTRIES_BASE_URL: ${RESTCOUNTRIES_BASE_URL:-https://api.restcountries.com/}
+      UNIVERSIDADES_BASE_URL: ${UNIVERSIDADES_BASE_URL:-http://universities.hipolabs.com/}
+      UNIVERSIDADES_PAIS: ${UNIVERSIDADES_PAIS:-Ecuador}
+      SEED_ON_START: ${SEED_ON_START:-true}
+      APPLY_MIGRATIONS: "true"
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:8080"
     depends_on:
       sqlserver:
         condition: service_healthy
-    environment:
-      MSSQL_SA_PASSWORD: "Password123!"
     volumes:
-      - ./Consumo_API_Paises_Dotnet/Bdd:/bdd:ro
-      - ./scripts/init-db.sh:/scripts/init-db.sh:ro
-    entrypoint: ["/bin/bash", "/scripts/init-db.sh"]
-    restart: "no"
-
+      - data_protection:/home/app/.aspnet/DataProtection-Keys
+    restart: unless-stopped
 volumes:
   sqlserver_data:
+  data_protection:

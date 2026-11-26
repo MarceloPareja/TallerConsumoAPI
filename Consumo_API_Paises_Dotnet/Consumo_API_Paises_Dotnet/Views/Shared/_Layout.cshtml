@@ -12,6 +12,7 @@
 <body>
     @{
         var accionActual = ViewContext.RouteData.Values["action"]?.ToString();
+        var controladorActual = ViewContext.RouteData.Values["controller"]?.ToString();
         var tituloCabecera = ViewData["HeaderTitle"] as string ?? ViewData["Title"] as string ?? "Consumo API Países";
         var subtituloCabecera = ViewData["Subtitle"] as string;
     }
@@ -40,7 +41,7 @@
 
         <nav class="app-nav">
             <div class="app-nav-inner">
-                <a class="app-nav-link @(accionActual == "Index" ? "active" : "")"
+                <a class="app-nav-link @(controladorActual == "Pais" && accionActual == "Index" ? "active" : "")"
                    asp-area="" asp-controller="Pais" asp-action="Index">Inicio</a>
                 <a class="app-nav-link @(accionActual is "Lista" or "Create" or "Edit" or "Details" or "Delete" ? "active" : "")"
                    asp-area="" asp-controller="Pais" asp-action="Lista">Países</a>
@@ -48,6 +49,8 @@
                    asp-area="" asp-controller="Pais" asp-action="BuscarPais">Consultar API</a>
                 <a class="app-nav-link @(accionActual == "Reportes" ? "active" : "")"
                    asp-area="" asp-controller="Pais" asp-action="Reportes">Reportes</a>
+                <a class="app-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Universidad" ? "active" : "")"
+                   asp-controller="Universidad" asp-action="Index">Universidades</a>
             </div>
         </nav>
 
